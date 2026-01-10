@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="relative min-h-screen pt-16">
+    <div className="relative min-h-screen">
       <SidebarProvider>
         <AdminSidebar />
         <SidebarInset className="flex flex-1 flex-col">

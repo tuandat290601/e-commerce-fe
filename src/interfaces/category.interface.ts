@@ -5,5 +5,5 @@ export interface ICategory {
   name: string;
   description?: string;
   products?: IProduct[];
-  subCategories?: ICategory[];
+  children?: ICategory[];
 }

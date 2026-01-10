@@ -1,7 +1,7 @@
-import Image from "next/image";
 import HomePoster from "@/assets/images/static/home-poster.jpg";
+import Image from "next/image";
 
-export default function Home() {
+const Main = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="relative flex min-h-screen w-full items-center justify-between bg-white dark:bg-black sm:items-start">
@@ -15,4 +15,6 @@ export default function Home() {
       </main>
     </div>
   );
-}
+};
+
+export default Main;

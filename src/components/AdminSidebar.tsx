@@ -60,10 +60,7 @@ const AdminSidebar = () => {
   const pathname = usePathname();
 
   return (
-    <Sidebar
-      collapsible="icon"
-      className="border-r border-sidebar-border pt-16"
-    >
+    <Sidebar collapsible="icon" className="border-r border-sidebar-border">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-xs uppercase tracking-wider text-muted-foreground">

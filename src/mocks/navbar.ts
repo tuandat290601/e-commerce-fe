@@ -7,7 +7,7 @@ export const defaultNavigationLinks: INavbarNavLink[] = [
     label: "Products",
     items: [
       {
-        href: "/products",
+        href: "/products/sales",
         label: "Special Price",
         description: "Last chance to get an unbelievable price.",
       },
@@ -17,7 +17,7 @@ export const defaultNavigationLinks: INavbarNavLink[] = [
         description: "Effortless style, timeless comfort.",
       },
       {
-        href: "/products/sales",
+        href: "/products",
         label: "All Products",
         description: "Discovery all items.",
       },
