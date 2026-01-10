@@ -1,12 +1,24 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { IPaginatedRequest } from "@/interfaces/request.interface";
 import { Plus } from "lucide-react";
+import { Suspense } from "react";
 import { Fragment } from "react/jsx-runtime";
+import CategoryTableSkeleton from "./components/CategoryTableSkeleton";
 import CategoryTableView from "./components/CategoryTableView";
 import CategoryTreeView from "./components/CategoryTreeView";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CategoryTableSearch from "./components/CategoryTableSearch";
 
-const CategoryAdmin = () => {
+const CategoryAdmin = async (props: {
+  searchParams: Promise<IPaginatedRequest>;
+}) => {
+  const params = await props.searchParams;
+  const queryParams: IPaginatedRequest = {
+    query: params.query ?? "",
+    page: params.page ?? 1,
+    pageSize: params.pageSize ?? 10,
+  };
+
   return (
     <section className="w-full mt-1">
       <div className="bg-white shadow-md p-4 rounded-md">
@@ -30,20 +42,27 @@ const CategoryAdmin = () => {
                 <TabsTrigger value="tree">Tree View</TabsTrigger>
               </TabsList>
             </Fragment>
-            <div>
-              <Input
-                type="text"
-                placeholder="E.g. All Products"
-                className="max-w-[20vw] min-w-[300px] w-screen mr-2"
-              />
-              <Button type="submit" variant="outline">
-                Search
-              </Button>
-            </div>
+            <CategoryTableSearch placeholder="" />
           </div>
           <div className="mt-4">
             <TabsContent value="table">
-              <CategoryTableView />
+              <Suspense
+                key={
+                  queryParams.query &&
+                  queryParams.page &&
+                  queryParams.pageSize &&
+                  `${queryParams.query}-${queryParams.page}-${queryParams.pageSize}`
+                }
+                fallback={
+                  <div className="grid grid-cols-1 gap-2">
+                    <CategoryTableSkeleton />
+                    <CategoryTableSkeleton />
+                    <CategoryTableSkeleton />
+                  </div>
+                }
+              >
+                <CategoryTableView queryParams={queryParams} />
+              </Suspense>
             </TabsContent>
             <TabsContent value="tree">
               <CategoryTreeView />
