@@ -85,7 +85,7 @@ const HamburgerIcon = ({
   </svg>
 );
 
-export const Header = React.forwardRef<HTMLElement, INavbarProps>(
+const Header = React.forwardRef<HTMLElement, INavbarProps>(
   (
     {
       className,
@@ -291,3 +291,5 @@ function ListItem({
     </li>
   );
 }
+
+export default Header;

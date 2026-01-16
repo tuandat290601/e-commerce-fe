@@ -5,8 +5,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ICategory } from "@/interfaces/category.interface";
-import { Delete, Edit, Eye, Trash } from "lucide-react";
+import { ICategory } from "@/interfaces/product.interface";
+import { Edit, Eye, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -34,13 +34,13 @@ const CategoryTableItem = ({ category }: { category: ICategory }) => {
                   >
                     {category.name}
                     <p className="text-sm truncate max-w-lg text-muted-foreground">
-                      {category.description}
+                      {category.name}
                     </p>
                   </Link>
                 </div>
               </TooltipTrigger>
               <TooltipContent className="w-96" side="bottom">
-                {category.description}
+                {category.name}
               </TooltipContent>
             </Tooltip>
           </div>

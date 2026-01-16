@@ -19,7 +19,7 @@ export default function MainLayout({
     <Fragment>
       <Header />
       <main className="relative min-h-screen">
-        <div className="relative min-h-screen">{children}</div>
+        <div className="relative min-h-screen  md:px-6">{children}</div>
       </main>
       <Footer />
     </Fragment>
